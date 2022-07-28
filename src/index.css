@@ -530,8 +530,8 @@ input.large {
 }
 
 .rec-card .image {
-  height: 160px;
-  width: 100%;
+  /* height: 160px; */
+  /* width: 100%; */
 }
 
 .rec-card .image:hover {
@@ -1634,9 +1634,13 @@ input.large {
     margin-top: 24px;
   }
 
+  .rec-card div:nth-child(1) {
+    height: 140px;
+  }
+
   .best-card .image {
-    height: 160px;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
     border-radius: 8px;
   }
 
@@ -1742,7 +1746,7 @@ input.large {
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
-    margin-bottom: 44px;
+    margin-bottom: 64px;
   }
 
   .services-section .container {
@@ -1841,6 +1845,10 @@ input.large {
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
     column-gap: 12px;
+  }
+
+  .rec-card div:nth-child(1) {
+    height: 140px;
   }
 
   /* Testimonials section */
