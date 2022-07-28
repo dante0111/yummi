@@ -531,7 +531,7 @@ input.large {
 
 .rec-card .image {
   height: 160px;
-  width: 216px;
+  width: 100%;
 }
 
 .rec-card .image:hover {
@@ -1843,10 +1843,6 @@ input.large {
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
     column-gap: 12px;
-  }
-
-  .rec-card div:nth-child(1) {
-    height: 140px;
   }
 
   /* Testimonials section */
