@@ -8,6 +8,7 @@ const Testimonials = () => {
   const [columns, setColumns] = useState(2);
   const [commentsArray, setCommentsArray] = useState([]);
   const [tablet, setTablet] = useState(true);
+  const [mobile, setMobile] = useState(true);
 
   useEffect(() => {
     function chunkify(a, n, balanced) {
@@ -52,11 +53,15 @@ const Testimonials = () => {
       if (window.innerWidth >= 1024) {
         setColumns(3);
         setTablet(true);
+        setMobile(true);
       } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
+        setMobile(true);
         setTablet(false);
         setColumns(2);
       } else {
+        setMobile(false);
         setColumns(1);
+        setTablet(false);
       }
     }
 
@@ -98,23 +103,25 @@ const Testimonials = () => {
             comment="Солеат легендос витуперата сеа еу, еам доминг перицула салутанди еа, ест цасе аугуе яуидам ут."
           />
         </div>
-        <div className="testimonial-cards">
-          <Card
-            name="Мукаддас Aслонова"
-            job="Покупатель"
-            comment="Яуандо хабемус дефиниебас вих ад. Тамяуам адмодум ан ест, ех при популо нолуиссе."
-          />
-          <Card
-            name="Джалал Бобо"
-            job="Продавец"
-            comment="Реяуе перпетуа ет дуо, вис семпер малуиссет цу. Саепе инсоленс не ест, ехпетендис инцидеринт те вим. Сумо постеа нострум не нам, еррем цотидиеяуе ест не. Инани аперири персецути ад пер."
-          />
-          <Card
-            name="Мирза Бедил"
-            job="Продавец"
-            comment="Цоммодо тхеопхрастус еи нам, облияуе виртуте деленит вел еа."
-          />
-        </div>
+        {mobile && (
+          <div className="testimonial-cards">
+            <Card
+              name="Мукаддас Aслонова"
+              job="Покупатель"
+              comment="Яуандо хабемус дефиниебас вих ад. Тамяуам адмодум ан ест, ех при популо нолуиссе."
+            />
+            <Card
+              name="Джалал Бобо"
+              job="Продавец"
+              comment="Реяуе перпетуа ет дуо, вис семпер малуиссет цу. Саепе инсоленс не ест, ехпетендис инцидеринт те вим. Сумо постеа нострум не нам, еррем цотидиеяуе ест не. Инани аперири персецути ад пер."
+            />
+            <Card
+              name="Мирза Бедил"
+              job="Продавец"
+              comment="Цоммодо тхеопхрастус еи нам, облияуе виртуте деленит вел еа."
+            />
+          </div>
+        )}
         {tablet && (
           <div className="testimonial-cards">
             <Card
