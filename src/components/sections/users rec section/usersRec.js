@@ -16,14 +16,14 @@ const images = importAll(
 );
 
 const UsersRec = () => {
-  const [meals, setMeals] = useState([]);
+  // const [meals, setMeals] = useState([]);
 
-  useEffect(() => {
-    axios.get("/meal").then((response) => {
-      setMeals(response.data.data);
-      console.log(response);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/meal").then((response) => {
+  //     setMeals(response.data.data);
+  //     console.log(response);
+  //   });
+  // }, []);
 
   return (
     <div className="rec-section">
@@ -35,7 +35,7 @@ const UsersRec = () => {
         </button>
       </div>
       <div className="rec-cards">
-        {meals
+        {/* {meals
           .slice(0, 4)
           .map(
             ({
@@ -61,7 +61,46 @@ const UsersRec = () => {
                 />
               );
             }
-          )}
+          )} */}
+        <Card
+          icon={images[2]}
+          image={images[4]}
+          name="Bekzod Eshnazarov"
+          info="Слоеная хрустящая Самса  с мясом"
+          mark={4.0}
+          reviews={42}
+          price="6 000"
+          priceType="сум/штук"
+        />
+        <Card
+          image={images[5]}
+          name="Мирзо Бедил"
+          info='Узбекская самса "Капля" с мясом'
+          mark={4.9}
+          reviews={114}
+          price="7 000"
+          priceType="сум/штук"
+        />
+        <Card
+          icon={images[0]}
+          image={images[6]}
+          name="Аиша Бека"
+          info="Плов, хлеб, салат и чай. Все в одном"
+          mark={4.8}
+          reviews={94}
+          price="28 000"
+          priceType="сум/порция"
+        />
+        <Card
+          icon={images[1]}
+          image={images[3]}
+          name="Malohat Batirova"
+          info="Уйгурский лагман. Контейнер и хлеб бесплатно"
+          mark={4.2}
+          reviews={61}
+          price="24 000"
+          priceType="сум/порция"
+        />
       </div>
     </div>
   );

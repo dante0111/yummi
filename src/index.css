@@ -1642,6 +1642,11 @@ input.large {
     margin-bottom: 24px;
   }
 
+  .testimonial-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .testimonial-cards {
     gap: 20px;
   }
@@ -1829,6 +1834,11 @@ input.large {
   /* Testimonials section */
   .testimonial-cards {
     gap: 12px;
+  }
+
+  .testimonial-container {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .testimonial-card {

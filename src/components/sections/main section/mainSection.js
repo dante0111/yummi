@@ -5,13 +5,13 @@ import Pattern from "../../../assets/images/main section/Pattern.png";
 import axios from "../../../api/axios";
 
 const MainSection = () => {
-  const [categories, setCategories] = useState([]);
+  // const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    axios.get("/category").then((response) => {
-      setCategories(response.data.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("/category").then((response) => {
+  //     setCategories(response.data.data);
+  //   });
+  // }, []);
 
   return (
     <div className="main-section">
@@ -41,9 +41,21 @@ const MainSection = () => {
         </div>
       </div>
       <div className="categories">
-        {categories.map(({ id, name, desc }) => {
+        {/* {categories.map(({ id, name, desc }) => {
           return <Card key={id} name={name} desc={desc} />;
-        })}
+        })} */}
+        <Card name="Национальная" desc="Плов, самса, шашлык, манты и другие" />
+        <Card name="Fast Food" desc="Лаваш, шаурма, бургер, хотдог и другие" />
+        <Card name="Европейская" desc="Барбекю, стейк, пицца, омлет и другое" />
+        <Card name="Азиатская" desc="Лагман, бешбармак, суши, кимчи и другие" />
+        <Card
+          name="Напитки"
+          desc="Айран, мохито, компот, сок, годжа и другие"
+        />
+        <Card
+          name="Кондитерская"
+          desc="Торты, печенье, смузи, гранулы и другие"
+        />
       </div>
     </div>
   );

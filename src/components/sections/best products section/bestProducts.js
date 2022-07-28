@@ -24,9 +24,9 @@ const BestProducts = () => {
 
   useEffect(() => {
     AOS.init();
-    axios.get("/meal").then((response) => {
-      setMeals(response.data.data);
-    });
+    // axios.get("/meal").then((response) => {
+    //   setMeals(response.data.data);
+    // });
   }, []);
 
   useEffect(() => {
@@ -65,9 +65,9 @@ const BestProducts = () => {
     <div className="best__pro-section">
       <div
         className="header"
-        data-aos="fade-up"
-        data-aos-offset="200"
-        data-aos-duration="400"
+        // data-aos="fade-up"
+        // data-aos-offset="200"
+        // data-aos-duration="400"
       >
         <p className="title">
           Лучшие продукты на <span style={{ color: "#27B04B" }}>yummi</span>
@@ -78,11 +78,11 @@ const BestProducts = () => {
       </div>
       <div
         className="best__pro-cards"
-        data-aos="fade-up"
-        data-aos-offset="200"
-        data-aos-duration="500"
+        // data-aos="fade-up"
+        // data-aos-offset="200"
+        // data-aos-duration="500"
       >
-        {meals
+        {/* {meals
           .slice(0, cardsCount)
           .map(
             ({
@@ -108,7 +108,95 @@ const BestProducts = () => {
                 />
               );
             }
-          )}
+          )} */}
+        <Card
+          icon={images[2]}
+          image={images[4]}
+          name="Bekzod Eshnazarov"
+          info="Слоеная хрустящая Самса  с мясом"
+          mark={4.0}
+          reviews={42}
+          price="6 000"
+          priceType="сум/штук"
+        />
+        <Card
+          image={images[5]}
+          name="Мирзо Бедил"
+          info='Узбекская самса "Капля" с мясом'
+          mark={4.9}
+          reviews={114}
+          price="7 000"
+          priceType="сум/штук"
+        />
+        <Card
+          icon={images[0]}
+          image={images[6]}
+          name="Аиша Бека"
+          info="Плов, хлеб, салат и чай. Все в одном"
+          mark={4.8}
+          reviews={94}
+          price="28 000"
+          priceType="сум/порция"
+        />
+        <Card
+          icon={images[1]}
+          image={images[3]}
+          name="Malohat Batirova"
+          info="Уйгурский лагман. Контейнер и хлеб бесплатно"
+          mark={4.2}
+          reviews={61}
+          price="24 000"
+          priceType="сум/порция"
+        />
+        <Card
+          icon={images[0]}
+          image={images[6]}
+          name="Аиша Бека"
+          info="Плов, хлеб, салат и чай. Все в одном"
+          mark={4.8}
+          reviews={94}
+          price="28 000"
+          priceType="сум/порция"
+        />
+        <Card
+          icon={images[2]}
+          image={images[4]}
+          name="Bekzod Eshnazarov"
+          info="Слоеная хрустящая Самса  с мясом"
+          mark={4.0}
+          reviews={42}
+          price="6 000"
+          priceType="сум/штук"
+        />
+        <Card
+          icon={images[1]}
+          image={images[3]}
+          name="Malohat Batirova"
+          info="Уйгурский лагман. Контейнер и хлеб бесплатно"
+          mark={4.2}
+          reviews={61}
+          price="24 000"
+          priceType="сум/порция"
+        />
+        <Card
+          image={images[5]}
+          name="Мирзо Бедил"
+          info='Узбекская самса "Капля" с мясом'
+          mark={4.9}
+          reviews={114}
+          price="7 000"
+          priceType="сум/штук"
+        />
+        <Card
+          className="tablet"
+          image={images[6]}
+          name="Malohat Batirova"
+          info="Уйгурский лагман. Контейнер и хлеб бесплатно"
+          mark={4.2}
+          reviews={88}
+          price="24 000"
+          priceType="сум/порция"
+        />
       </div>
       <div className="more-btn">
         <button className="btn-primary" onClick={showMore}>
