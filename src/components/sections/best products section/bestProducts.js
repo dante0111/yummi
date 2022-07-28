@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import Card from "./cards/card";
 import { RiArrowRightSLine } from "react-icons/ri";
 import axios from "../../../api/axios";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 function importAll(r) {
   return r.keys().map(r);
