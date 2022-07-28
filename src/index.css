@@ -748,7 +748,7 @@ input.large {
 
 .best-card .image {
   height: 160px;
-  width: 216px;
+  width: 100%;
 }
 
 .best-card .image:hover {
@@ -1639,9 +1639,7 @@ input.large {
   }
 
   .best-card .image {
-    /* height: 100%; */
-    /* width: 100%; */
-    border-radius: 8px;
+    width: 216px;
   }
 
   /* Testimonials section */
