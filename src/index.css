@@ -1493,6 +1493,12 @@ input.large {
     margin-top: 24px;
     gap: 12px;
     overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+  }
+
+  .news-section .news-cards::-webkit-scrollbar {
+    display: none;
   }
 
   .news-card {
@@ -1539,6 +1545,12 @@ input.large {
     margin-top: 24px;
     gap: 12px;
     overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .rec-cards::-webkit-scrollbar {
+    display: none;
   }
 
   .rec-card {
