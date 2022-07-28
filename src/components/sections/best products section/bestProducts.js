@@ -20,12 +20,12 @@ const BestProducts = () => {
   const [cardsCount, setCardsCount] = useState(null);
   const [add, setAdd] = useState(null);
 
-  useEffect(() => {
-    AOS.init();
-    // axios.get("/meal").then((response) => {
-    //   setMeals(response.data.data);
-    // });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init();
+  //   // axios.get("/meal").then((response) => {
+  //   //   setMeals(response.data.data);
+  //   // });
+  // }, []);
 
   useEffect(() => {
     if (window.innerWidth >= 1024) {
@@ -61,12 +61,7 @@ const BestProducts = () => {
 
   return (
     <div className="best__pro-section">
-      <div
-        className="header"
-        // data-aos="fade-up"
-        // data-aos-offset="200"
-        // data-aos-duration="400"
-      >
+      <div className="header">
         <p className="title">
           Лучшие продукты на <span style={{ color: "#27B04B" }}>yummi</span>
         </p>
@@ -74,12 +69,7 @@ const BestProducts = () => {
           <RiArrowRightSLine className="arrow" />
         </button>
       </div>
-      <div
-        className="best__pro-cards"
-        // data-aos="fade-up"
-        // data-aos-offset="200"
-        // data-aos-duration="500"
-      >
+      <div className="best__pro-cards">
         {/* {meals
           .slice(0, cardsCount)
           .map(
