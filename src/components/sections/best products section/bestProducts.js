@@ -21,7 +21,6 @@ const BestProducts = () => {
   const [add, setAdd] = useState(null);
 
   // useEffect(() => {
-  //   AOS.init();
   //   // axios.get("/meal").then((response) => {
   //   //   setMeals(response.data.data);
   //   // });
