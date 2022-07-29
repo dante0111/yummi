@@ -1557,6 +1557,10 @@ input.large {
     width: 216px;
   }
 
+  .rec-card div:nth-child(1) {
+    height: 140px;
+  }
+
   .rec-card .image {
     width: 216px;
     height: 140px;
@@ -1634,12 +1638,14 @@ input.large {
     margin-top: 24px;
   }
 
-  .rec-card div:nth-child(1) {
+  .best-card div:nth-child(1) {
     height: 140px;
   }
 
   .best-card .image {
-    width: 216px;
+    width: 100%;
+    height: calc(100vw * 0.182);
+    border-radius: 8px;
   }
 
   /* Testimonials section */
@@ -1843,6 +1849,15 @@ input.large {
     grid-template-columns: 1fr 1fr;
     row-gap: 24px;
     column-gap: 12px;
+  }
+
+  .best-card div:nth-child(1) {
+    height: 140px;
+  }
+
+  .best-card .image {
+    min-width: 244px;
+    height: max(calc(100vw * 0.259), 140px);
   }
 
   /* Testimonials section */

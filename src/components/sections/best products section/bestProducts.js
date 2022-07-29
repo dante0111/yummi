@@ -19,6 +19,7 @@ const BestProducts = () => {
   const [meals, setMeals] = useState([]);
   const [cardsCount, setCardsCount] = useState(null);
   const [add, setAdd] = useState(null);
+  const [tablet, setTablet] = useState(false);
 
   // useEffect(() => {
   //   // axios.get("/meal").then((response) => {
@@ -30,10 +31,13 @@ const BestProducts = () => {
     if (window.innerWidth >= 1024) {
       setAdd(4);
       setCardsCount(8);
+      setTablet(false);
     } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
       setCardsCount(9);
+      setTablet(true);
       setAdd(3);
     } else {
+      setTablet(false);
       setCardsCount(8);
       setAdd(2);
     }
@@ -42,11 +46,14 @@ const BestProducts = () => {
       if (window.innerWidth >= 1024) {
         setCardsCount(8);
         setAdd(4);
+        setTablet(false);
       } else if (window.innerWidth < 1024 && window.innerWidth > 768) {
         setAdd(3);
+        setTablet(true);
         setCardsCount(9);
       } else {
         setAdd(2);
+        setTablet(false);
         setCardsCount(8);
       }
     }
@@ -174,16 +181,17 @@ const BestProducts = () => {
           price="7 000"
           priceType="сум/штук"
         />
-        <Card
-          className="tablet"
-          image={images[6]}
-          name="Malohat Batirova"
-          info="Уйгурский лагман. Контейнер и хлеб бесплатно"
-          mark={4.2}
-          reviews={88}
-          price="24 000"
-          priceType="сум/порция"
-        />
+        {tablet && (
+          <Card
+            image={images[6]}
+            name="Malohat Batirova"
+            info="Уйгурский лагман. Контейнер и хлеб бесплатно"
+            mark={4.2}
+            reviews={88}
+            price="24 000"
+            priceType="сум/порция"
+          />
+        )}
       </div>
       <div className="more-btn">
         <button className="btn-primary" onClick={showMore}>

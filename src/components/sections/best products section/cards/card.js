@@ -1,19 +1,9 @@
 import React from "react";
 import { RiStarFill } from "react-icons/ri";
 
-const Card = ({
-  className,
-  image,
-  icon,
-  name,
-  info,
-  mark,
-  reviews,
-  price,
-  priceType,
-}) => {
+const Card = ({ image, icon, name, info, mark, reviews, price, priceType }) => {
   return (
-    <div className={`best-card ${className}`}>
+    <div className="best-card">
       <div>
         <img src={image} alt="" className="image" />
       </div>
