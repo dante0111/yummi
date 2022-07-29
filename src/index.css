@@ -22,6 +22,7 @@
 * {
   font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -42,10 +43,6 @@ body {
   z-index: 1;
 }
 
-.btn-primary:hover {
-  background-color: var(--clr-primary-btn-hover);
-}
-
 .btn-secondary {
   background-color: var(--clr-gray-100);
   color: var(--clr-black);
@@ -58,9 +55,87 @@ body {
   cursor: pointer;
 }
 
-.btn-secondary:hover,
-.btn-secondary:active {
-  background-color: var(--clr-gray-200);
+@media (hover: hover) {
+  .btn-primary:hover {
+    background-color: var(--clr-primary-btn-hover);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--clr-gray-200);
+  }
+
+  .main__right-bar a:hover {
+    width: 20px;
+    height: 20px;
+    text-decoration: none;
+    color: var(--clr-gray-600);
+  }
+
+  .main-section .search-link:hover {
+    color: var(--clr-gray-600);
+  }
+
+  .category-card:hover {
+    background-color: var(--clr-gray-200);
+  }
+
+  .schedule-card:hover {
+    background-color: var(--clr-gray-200);
+  }
+
+  .news-card:hover {
+    background-color: var(--clr-gray-200);
+  }
+
+  .rec-section .see-btn:hover {
+    color: var(--clr-gray-700);
+  }
+
+  .rec-card:hover .image {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .rec-card:not(:hover) .image {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+  }
+
+  .best__pro-section .see-btn:hover {
+    color: var(--clr-gray-700);
+  }
+
+  .best-card:hover .image {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+
+  .best-card:not(:hover) .image {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+  }
+
+  .testimonial-card:hover {
+    background-color: var(--clr-gray-200);
+  }
+
+  .certification-section .badges img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s 0.1s ease;
+  }
+
+  .certification-section .badges img:not(:hover) {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+
+  .footer .middle li:hover {
+    text-decoration: underline;
+  }
+
+  .footer .middle .section-4 .messengers li .icon:hover {
+    color: var(--clr-gray-400);
+  }
 }
 
 .mobile {
@@ -186,13 +261,6 @@ body {
   color: var(--clr-black);
 }
 
-.main__right-bar a:hover {
-  width: 20px;
-  height: 20px;
-  text-decoration: none;
-  color: var(--clr-gray-600);
-}
-
 /* Main Section */
 .main-section {
   width: 1180px;
@@ -266,10 +334,6 @@ input.large {
   cursor: pointer;
 }
 
-.main-section .search-link:hover {
-  color: var(--clr-gray-600);
-}
-
 .main-section .search-link .arrow {
   width: 16px;
   height: 16px;
@@ -287,10 +351,6 @@ input.large {
   padding: 20px 20px 38px;
   border-radius: 8px;
   cursor: pointer;
-}
-
-.category-card:hover {
-  background-color: var(--clr-gray-200);
 }
 
 .category-card .title {
@@ -344,10 +404,6 @@ input.large {
   height: 209px;
   gap: 9px;
   cursor: pointer;
-}
-
-.schedule-card:hover {
-  background-color: var(--clr-gray-200);
 }
 
 .schedule-card > div {
@@ -431,10 +487,6 @@ input.large {
   cursor: pointer;
 }
 
-.news-card:hover {
-  background-color: var(--clr-gray-200);
-}
-
 .news-card .title {
   margin: 0;
   font-weight: 500;
@@ -497,10 +549,6 @@ input.large {
   cursor: pointer;
 }
 
-.rec-section .see-btn:hover {
-  color: var(--clr-gray-700);
-}
-
 .rec-section .see-btn::before {
   content: "Посмотреть все";
 }
@@ -532,16 +580,6 @@ input.large {
 .rec-card .image {
   height: 160px;
   width: 100%;
-}
-
-.rec-card .image:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
-}
-
-.rec-card .image:not(:hover) {
-  transform: scale(1);
-  transition: transform 0.2s ease;
 }
 
 .rec-card .name {
@@ -713,10 +751,6 @@ input.large {
   cursor: pointer;
 }
 
-.best__pro-section .see-btn:hover {
-  color: var(--clr-gray-700);
-}
-
 .best__pro-section .see-btn::before {
   content: "Посмотреть все";
 }
@@ -749,16 +783,6 @@ input.large {
 .best-card .image {
   height: 160px;
   width: 100%;
-}
-
-.best-card .image:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
-}
-
-.best-card .image:not(:hover) {
-  transform: scale(1);
-  transition: transform 0.2s ease;
 }
 
 .best-card .name {
@@ -923,10 +947,6 @@ input.large {
   cursor: pointer;
 }
 
-.testimonial-card:hover {
-  background-color: var(--clr-gray-200);
-}
-
 .testimonial-card .header {
   display: flex;
   gap: 20px;
@@ -1035,16 +1055,6 @@ input.large {
   justify-content: center;
   gap: 76px;
   cursor: pointer;
-}
-
-.certification-section .badges img:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s 0.1s ease;
-}
-
-.certification-section .badges img:not(:hover) {
-  transform: scale(1);
-  transition: transform 0.3s ease;
 }
 
 .certification-section .characters-container {
@@ -1216,10 +1226,6 @@ input.large {
   cursor: pointer;
 }
 
-.footer .middle li:hover {
-  text-decoration: underline;
-}
-
 .footer .middle .section-4 .desc {
   margin: 0;
   margin-top: 16px;
@@ -1253,10 +1259,6 @@ input.large {
   width: 24px;
   height: 24px;
   color: var(--clr-white);
-}
-
-.footer .middle .section-4 .messengers li .icon:hover {
-  color: var(--clr-gray-400);
 }
 
 .footer .bottom {
