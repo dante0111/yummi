@@ -15,7 +15,7 @@ const images = importAll(
 
 const Services = () => {
   return (
-    <div className="services-section">
+    <section className="services-section">
       <div className="container">
         <Card
           icon={images[2]}
@@ -42,7 +42,7 @@ const Services = () => {
           subtitle="Регистрация в качестве VIP клиента гарантирует вам бонусы и продавцов с высоким рейтингом"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

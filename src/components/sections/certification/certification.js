@@ -14,7 +14,7 @@ const images = importAll(
 
 const Certification = () => {
   return (
-    <div className="certification-section">
+    <section className="certification-section">
       <div className="container">
         <p className="title">Сертификация и рейтинговые знаки</p>
         <p className="subtitle">
@@ -45,7 +45,7 @@ const Certification = () => {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

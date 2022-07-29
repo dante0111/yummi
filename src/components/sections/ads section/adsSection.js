@@ -14,7 +14,7 @@ const AdsSection = ({
   };
 
   return (
-    <div className="ads-section">
+    <section className="ads-section">
       <div className="container" style={style}>
         <div style={{ color: textColor }}>
           <p className="title">{title}</p>
@@ -22,7 +22,7 @@ const AdsSection = ({
         </div>
         <img src={image} alt="" />
       </div>
-    </div>
+    </section>
   );
 };
 

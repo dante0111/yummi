@@ -27,7 +27,7 @@ const images = importAll(
 
 const Footer = () => {
   return (
-    <div className="footer">
+    <footer className="footer">
       <div className="app desktop">
         <div className="container">
           <div>
@@ -124,7 +124,7 @@ const Footer = () => {
           <p>© 2022 "Yummi mart" ООО, Все права защищены</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

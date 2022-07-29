@@ -15,7 +15,7 @@ const images = importAll(
 
 const ScheduleSection = () => {
   return (
-    <div className="schedule-section">
+    <section className="schedule-section">
       <p className="header">Заказ еды по времени</p>
       <div className="schedule-cards">
         <Card
@@ -35,7 +35,7 @@ const ScheduleSection = () => {
           не трагедия  😅"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

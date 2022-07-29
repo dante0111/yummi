@@ -70,7 +70,7 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div className="testimonial-section">
+    <section className="testimonial-section">
       <p className="title">Что говорят о нас?</p>
       <div className="testimonial-container">
         {/* {commentsArray.map((column, index) => {
@@ -153,7 +153,7 @@ const Testimonials = () => {
           Показать больше
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

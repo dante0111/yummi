@@ -66,7 +66,7 @@ const BestProducts = () => {
   };
 
   return (
-    <div className="best__pro-section">
+    <section className="best__pro-section">
       <div className="header">
         <p className="title">
           Лучшие продукты на <span style={{ color: "#27B04B" }}>yummi</span>
@@ -198,7 +198,7 @@ const BestProducts = () => {
           Показать больше
         </button>
       </div>
-    </div>
+    </section>
   );
 };
 

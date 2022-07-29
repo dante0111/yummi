@@ -3,7 +3,7 @@ import Card from "./cards/card";
 
 const NewsSection = () => {
   return (
-    <div className="news-section">
+    <section className="news-section">
       <p className="header">Акции и новости</p>
       <div className="news-cards">
         <Card
@@ -24,7 +24,7 @@ const NewsSection = () => {
         />
         <Card title="С 2022 годом!" subtitle="Смотреть ролик" playIcon={true} />
       </div>
-    </div>
+    </section>
   );
 };
 

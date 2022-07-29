@@ -25,7 +25,7 @@ const OurRec = () => {
   // }, []);
 
   return (
-    <div className="rec-section">
+    <section className="rec-section">
       <div className="header">
         <p className="title">Наша рекомендация</p>
         <button className="see-btn">
@@ -100,7 +100,7 @@ const OurRec = () => {
           priceType="сум/порция"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

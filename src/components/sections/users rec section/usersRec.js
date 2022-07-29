@@ -26,7 +26,7 @@ const UsersRec = () => {
   // }, []);
 
   return (
-    <div className="rec-section">
+    <section className="rec-section">
       <div className="header">
         <p className="title">Выбор покупателей</p>
         <button className="see-btn">
@@ -102,7 +102,7 @@ const UsersRec = () => {
           priceType="сум/порция"
         />
       </div>
-    </div>
+    </section>
   );
 };
 
