@@ -11,6 +11,8 @@ import ScheduleSection from "../../components/sections/schedule section/schedule
 import Services from "../../components/sections/services section/services";
 import Testimonials from "../../components/sections/testimonials section/testimonials";
 import UsersRec from "../../components/sections/users rec section/usersRec";
+import ScrollToTop from "react-scroll-to-top";
+import { RiArrowUpSLine } from "react-icons/ri";
 
 function importAll(r) {
   return r.keys().map(r);
@@ -27,6 +29,7 @@ const images = importAll(
 const Main = () => {
   return (
     <div>
+      <ScrollToTop component={<RiArrowUpSLine />} smooth top={100} />
       <Navbar />
       <MainSection />
       <ScheduleSection />

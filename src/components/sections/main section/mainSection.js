@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef, useReducer } from "react";
-import { RiArrowDownSLine, RiMapPin2Line, RiCloseFill } from "react-icons/ri";
+import {
+  RiArrowDownSLine,
+  RiMapPin2Line,
+  RiCloseFill,
+  RiArrowLeftSLine,
+} from "react-icons/ri";
 import Card from "./cards/card";
 import Pattern from "../../../assets/images/main section/Pattern.png";
 import data from "../../dataFood/data.json";
@@ -9,8 +14,10 @@ function useOnClickOutside(ref, handler, targetEl) {
   useEffect(() => {
     const listener = (event) => {
       for (let el of [...targetEl]) {
+        console.log(event.target.classList.contains(el));
         if (event.target.classList.contains(el)) return;
       }
+      console.log(ref);
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }
@@ -59,6 +66,7 @@ const MainSection = () => {
   const refCategory = useRef();
   const refInput = useRef();
   const refTextInput = useRef();
+  const refTextInputMobile = useRef();
   const [dropdownCategory, setDropdownCategory] = useState(false);
   const [dropdownInput, setDropdownInput] = useState(false);
   const [closeBtn, setCloseBtn] = useState(false);
@@ -126,7 +134,6 @@ const MainSection = () => {
     } else setCloseBtn(true);
     const searchWord = e.target.value;
     setFilteredFoods(searchWord);
-    console.log(234234);
     !dropdownInput && setDropdownInput(true);
   };
 
@@ -190,6 +197,11 @@ const MainSection = () => {
     dispatch({ type: "select", payload: key });
   };
 
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    dispatch({ type: "select", payload: -1 });
+  };
+
   const setCategory = (value) => {
     setCategoryText(value);
     setDropdownCategory(false);
@@ -205,10 +217,16 @@ const MainSection = () => {
     let history = [];
     JSON.parse(localStorage.getItem("historyFoods")) &&
       (history = JSON.parse(localStorage.getItem("historyFoods")));
-    if (!history.includes(value) && value !== "") {
-      history.unshift(value);
-      if (history.length > 5) {
-        history.splice(5);
+    if (value !== "") {
+      if (!history.includes(value)) {
+        history.unshift(value);
+        if (history.length > 5) {
+          history.splice(5);
+        }
+      } else {
+        const index = history.indexOf(value);
+        history.splice(index, 1);
+        history.unshift(value);
       }
       localStorage.setItem("historyFoods", JSON.stringify(history));
     }
@@ -223,6 +241,58 @@ const MainSection = () => {
       refTextInput.current.blur();
     }
   };
+
+  const [mobileSearchOpened, setMobileSearchOpened] = useState(false);
+  const [dropdownInputMobile, setDropdownInputMobile] = useState(false);
+  const [closeBtnMobile, setCloseBtnMobile] = useState(false);
+
+  const openMobileSearch = () => {
+    setMobileSearchOpened(true);
+    refTextInputMobile.current.focus();
+    refTextInput.current.value = "";
+  };
+
+  const closeMobileSearch = () => {
+    setMobileSearchOpened(false);
+    setDropdownInputMobile(false);
+    refTextInputMobile.current.value = "";
+  };
+
+  const handleInputMobile = (e) => {
+    dispatch({ type: "select", payload: -1 });
+    if (e.target.value.length === 0) {
+      setCloseBtnMobile(false);
+    } else setCloseBtnMobile(true);
+    const searchWord = e.target.value;
+    setFilteredFoods(searchWord);
+    !dropdownInputMobile && setDropdownInputMobile(true);
+  };
+
+  const setSearchMobile = (value) => {
+    setHistoryItem(value);
+    refTextInputMobile.current.value = value;
+    setDropdownInput(false);
+    setDropdownInputMobile(false);
+    setCloseBtnMobile(true);
+  };
+
+  const clearInputMobile = () => {
+    dispatch({ type: "select", payload: -1 });
+    refTextInputMobile.current.value = "";
+    refTextInputMobile.current.focus();
+    setCloseBtnMobile(false);
+    setFilteredFoods("");
+  };
+
+  useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth >= 1024) {
+        setMobileSearchOpened(false);
+      }
+    }
+
+    window.addEventListener("resize", handleResize);
+  }, []);
 
   return (
     <main className="main-section">
@@ -243,6 +313,7 @@ const MainSection = () => {
             type="text"
             placeholder="Поиск еды"
             className="search-bar small"
+            onClick={openMobileSearch}
           />
           <div className="desktop">
             <div>
@@ -263,11 +334,8 @@ const MainSection = () => {
               </button>
             </div>
           </div>
-          <div className="dropdown-input">
-            <div
-              ref={refInput}
-              className={`dropdown-menu ${dropdownInput ? "show" : ""}`}
-            >
+          <div className="dropdown-input" ref={refInput}>
+            <div className={`dropdown-menu ${dropdownInput ? "show" : ""}`}>
               <div className="filtered-data">
                 {filteredData.length - historyFoodsCount > 0 ? (
                   filteredData
@@ -278,6 +346,7 @@ const MainSection = () => {
                           key={key}
                           className="text"
                           onClick={() => setSearch(value)}
+                          onMouseLeave={handleMouseLeave}
                           onMouseEnter={() => handleMouseOver(key)}
                           style={{
                             backgroundColor:
@@ -303,6 +372,7 @@ const MainSection = () => {
                       key={key + filteredData.length - historyFoodsCount}
                       className="text"
                       onClick={() => setSearch(food)}
+                      onMouseLeave={handleMouseLeave}
                       onMouseEnter={() =>
                         handleMouseOver(
                           key + filteredData.length - historyFoodsCount
@@ -325,11 +395,8 @@ const MainSection = () => {
               )}
             </div>
           </div>
-          <div className="dropdown-category">
-            <div
-              ref={refCategory}
-              className={`dropdown-menu ${dropdownCategory ? "show" : ""}`}
-            >
+          <div className="dropdown-category" ref={refCategory}>
+            <div className={`dropdown-menu ${dropdownCategory ? "show" : ""}`}>
               {categories.slice(0, 7).map((category) => {
                 return <p onClick={() => setCategory(category)}>{category}</p>;
               })}
@@ -361,6 +428,81 @@ const MainSection = () => {
           name="Кондитерская"
           desc="Торты, печенье, смузи, гранулы и другие"
         />
+      </div>
+      {/* Mobile search input */}
+      <div
+        className={`mobile-search-window ${
+          mobileSearchOpened ? "mobile-s-show" : "mobile-s-hide"
+        }`}
+      >
+        <div>
+          <div className="exit-btn" onClick={closeMobileSearch}>
+            <RiArrowLeftSLine />
+          </div>
+          <input
+            ref={refTextInputMobile}
+            type="text"
+            placeholder="Напиши что-нибудь"
+            className="mobile-search-input"
+            onChange={handleInputMobile}
+            onFocus={handleInputMobile}
+            onKeyDown={handleInputMobile}
+            onClick={handleInputMobile}
+          />
+          <div
+            className={`close-btn ${
+              closeBtnMobile ? "close-show" : "close-hide"
+            }`}
+            onClick={clearInputMobile}
+          >
+            <RiCloseFill />
+          </div>
+          <button className="btn-primary">Найти</button>
+        </div>
+        <div className="line" />
+        <div className="dropdown-input-mobile">
+          <div
+            className={`dropdown-menu-mobile ${
+              dropdownInputMobile ? "show" : ""
+            }`}
+          >
+            <div className="filtered-data">
+              {filteredData.length - historyFoodsCount > 0 ? (
+                filteredData
+                  .slice(0, filteredData.length - historyFoodsCount)
+                  .map((value, key) => {
+                    return (
+                      <p
+                        key={key}
+                        className="text"
+                        onClick={() => setSearchMobile(value)}
+                      >
+                        {value}
+                      </p>
+                    );
+                  })
+              ) : (
+                <p className="empty">Ничего не найдено</p>
+              )}
+            </div>
+            <p className="history-header">История поиска</p>
+            {historyFoodsCount ? (
+              filteredData.slice(-historyFoodsCount).map((food, key) => {
+                return (
+                  <p
+                    key={key}
+                    className="text"
+                    onClick={() => setSearchMobile(food)}
+                  >
+                    {food}
+                  </p>
+                );
+              })
+            ) : (
+              <p className="empty">Нет истории поиска</p>
+            )}
+          </div>
+        </div>
       </div>
     </main>
   );
