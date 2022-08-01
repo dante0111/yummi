@@ -208,9 +208,11 @@ const MainSection = () => {
   };
 
   const setSearch = (value) => {
-    setHistoryItem(value);
-    refTextInput.current.value = value;
-    setDropdownInput(false);
+    if (value) {
+      setHistoryItem(value);
+      refTextInput.current.value = value;
+      setDropdownInput(false);
+    }
   };
 
   const setHistoryItem = (value) => {
