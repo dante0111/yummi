@@ -187,8 +187,13 @@ const MainSection = () => {
   }, [arrowDownPressed, filteredData]);
 
   useEffect(() => {
-    if (state.selectedIndex !== -1 && !isHovering && filteredData) {
+    if (
+      state.selectedIndex !== -1 &&
+      !isHovering &&
+      filteredData.length !== 0
+    ) {
       refTextInput.current.value = [...filteredData][state.selectedIndex];
+      console.log(refTextInput.current.value);
     }
   }, [state, filteredData, isHovering]);
 
