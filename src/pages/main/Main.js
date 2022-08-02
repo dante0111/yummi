@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import AdsSection from "../../components/sections/ads section/adsSection";
 import BestProducts from "../../components/sections/best products section/bestProducts";
@@ -13,6 +13,9 @@ import Testimonials from "../../components/sections/testimonials section/testimo
 import UsersRec from "../../components/sections/users rec section/usersRec";
 import ScrollToTop from "react-scroll-to-top";
 import { RiArrowUpSLine } from "react-icons/ri";
+import ModalContainer from "../../components/general/Modal/Location/ModalContainer";
+
+export const ModalContext = createContext();
 
 function importAll(r) {
   return r.keys().map(r);
@@ -27,10 +30,15 @@ const images = importAll(
 );
 
 const Main = () => {
+  const [modalOpened, setModalOpened] = useState(false);
+
   return (
     <div>
       <ScrollToTop component={<RiArrowUpSLine />} smooth top={100} />
-      <Navbar />
+      <ModalContext.Provider value={{ modalOpened, setModalOpened }}>
+        <Navbar />
+        <ModalContainer />
+      </ModalContext.Provider>
       <MainSection />
       <ScheduleSection />
       <NewsSection />

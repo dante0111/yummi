@@ -14,10 +14,8 @@ function useOnClickOutside(ref, handler, targetEl) {
   useEffect(() => {
     const listener = (event) => {
       for (let el of [...targetEl]) {
-        console.log(event.target.classList.contains(el));
         if (event.target.classList.contains(el)) return;
       }
-      console.log(ref);
       if (!ref.current || ref.current.contains(event.target)) {
         return;
       }

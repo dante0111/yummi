@@ -15,7 +15,9 @@
 
   --clr-primary-green: #27b04b;
   --clr-primary-red: #ff005c;
+  --clr-primary-delete-red: #e22316;
 
+  --clr-primary-delete-red-hover: #e64438;
   --clr-primary-btn-hover: #3fc262;
   --padding-sections: 40px;
 }
@@ -104,6 +106,257 @@ body {
   color: var(--clr-white) !important;
 }
 
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(31, 41, 55, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 150ms ease;
+  pointer-events: none;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  position: relative;
+  /* width: 700px;
+  height: 500px; */
+  box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.1),
+    0px 8px 8px -4px rgba(16, 24, 40, 0.04);
+  background-color: var(--clr-white);
+  border-radius: 8px;
+  padding: 36px;
+}
+
+.modal .modal__close-btn {
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: none;
+  background-color: transparent;
+  color: var(--clr-gray-500);
+  cursor: pointer;
+}
+
+.modal .modal__close-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.modal .header {
+  margin: 0;
+  margin-bottom: 36px;
+  color: var(--clr-gray-800);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.modal .container__radio-location {
+  width: 628px;
+  height: 292px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.modal .container__radio-location::-webkit-scrollbar {
+  display: none;
+}
+
+.modal .container__radio-location > div:nth-child(1) {
+  width: 628px;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.modal .container__radio-location .form-control {
+  height: fit-content;
+  cursor: pointer;
+}
+
+.modal .container__radio-location .form-control input {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.modal .custom-radio {
+  width: 304px;
+  height: 96px;
+  padding: 16px;
+  background-color: var(--clr-gray-50);
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  position: relative;
+}
+
+.modal .custom-radio:hover {
+  background-color: var(--clr-gray-100);
+  transition: all 150ms ease;
+}
+
+.modal .custom-radio .edit-btn {
+  background-color: transparent;
+  padding: 4px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  color: var(--clr-gray-500);
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.modal .custom-radio .edit-btn:hover {
+  color: var(--clr-gray-700);
+  background-color: var(--clr-gray-200);
+  transition: all 250ms ease;
+}
+
+.modal .custom-radio .edit-btn.show-edit {
+  opacity: 1;
+  transition: opacity 250ms ease;
+}
+
+.modal .custom-radio .edit-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.modal .custom-radio .title {
+  margin: 0;
+  color: var(--clr-gray-800);
+  font-weight: 500;
+}
+
+.modal .custom-radio .subtitle {
+  margin: 0;
+  margin-top: 4px;
+  color: var(--clr-gray-700);
+  font-weight: 400;
+}
+
+.modal .form-control input:checked ~ .custom-radio {
+  border: 1px solid var(--clr-primary-green);
+}
+
+.modal .selection-address {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.modal .selection-address .new-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  background-color: transparent;
+  border: none;
+  color: var(--clr-primary-green);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.modal .selection-address .select-btn {
+  padding: 8px 20px;
+  border-radius: 6px;
+  background-color: var(--clr-gray-200);
+  border: none;
+  color: var(--clr-gray-400);
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.modal .modal-content .location {
+  margin: 0;
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+}
+
+.modal .modal-content .location .location-content {
+  background-color: var(--clr-gray-50);
+  border-radius: 6px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  flex-grow: 1;
+}
+
+.modal .modal-content .location-content .selected-text {
+  margin: 0;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--clr-gray-400);
+}
+
+.modal .modal-content .location-content .location-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--clr-gray-800);
+}
+
+.modal .modal-content .location .btn-delete {
+  border: none;
+  background-color: var(--clr-primary-delete-red);
+  box-sizing: border-box;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal .modal-content .location .btn-delete:hover {
+  border: none;
+  background-color: var(--clr-primary-delete-red-hover);
+  box-sizing: border-box;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal .modal-content .btn-delete svg {
+  color: white;
+  width: 16px;
+  height: 16px;
+}
+
+.modal .modal-content .map-container {
+  margin: 0;
+  margin-top: 36px;
+  height: 300px;
+  border-radius: 6px;
+  background-color: var(--clr-gray-200);
+}
+
 /* Main Header */
 .main-header {
   margin: auto;
@@ -129,6 +382,11 @@ body {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+.main__top-bar .location {
+  cursor: pointer;
+  user-select: none;
 }
 
 .main__top-bar div div p {
