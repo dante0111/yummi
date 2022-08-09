@@ -3,6 +3,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { ModalContext } from "../../../../pages/main/Main";
 import LocationCard from "./LocationCard";
 import Modal from "../Modal";
+import MapContainer from "./map/MapContainer";
 
 const ModalContainer = () => {
   // modal addresses
@@ -46,7 +47,9 @@ const ModalContainer = () => {
             <></>
           )}
         </div>
-        <div className="map-container"></div>
+        <div className="map-container">
+          <MapContainer width={900} height={526} />
+        </div>
       </Modal>
       <Modal
         active={modalOpened}

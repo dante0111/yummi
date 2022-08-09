@@ -350,6 +350,7 @@ body {
 }
 
 .modal .modal-content .map-container {
+  position: relative;
   margin: 0;
   margin-top: 36px;
   height: 300px;
